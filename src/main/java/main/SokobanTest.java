@@ -16,7 +16,7 @@ public class SokobanTest {
         frame = new JFrame ("SokobanTest");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new TileMap());
-        frame.setSize(435, 455);
+        frame.setSize(375, 440);
         frame.setVisible(true);
         leerTeclado();
     }

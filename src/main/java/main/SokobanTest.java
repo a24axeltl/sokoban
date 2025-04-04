@@ -18,32 +18,5 @@ public class SokobanTest {
         frame.add(new TileMap());
         frame.setSize(375, 440);
         frame.setVisible(true);
-        leerTeclado();
-    }
-    
-    private void leerTeclado(){
-        frame.addKeyListener(new KeyListener (){
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch(e.getKeyCode()){
-                    case 38:
-                        System.out.println("Arriba");
-                    case 40:
-                        System.out.println("Abajo");
-                    case 37:
-                        System.out.println("Izquierda");
-                    case 39:
-                        System.out.println("Derecha");
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }  
-        });
     }
 }

@@ -2,6 +2,8 @@ package main;
 
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -18,6 +20,10 @@ public class TileMap extends JPanel{
     
     public TileMap(){
         tablero = new Tablero();
+        leerTeclado();
+        //Reaccion de las teclas de forma automatica.
+        setFocusable(true);
+        requestFocusInWindow();
         
         try {
             imagenMuro = ImageIO.read(new File ("sprites/muro.png"));
@@ -73,4 +79,53 @@ public class TileMap extends JPanel{
     private void paintBoton(Graphics g, int fila, int columna){
         g.drawImage(imagenBoton, columna*TileTamanho, fila*TileTamanho, TileTamanho, TileTamanho, this);
     }
+    
+    private void leerTeclado(){
+        addKeyListener(new KeyListener (){
+        @Override
+        public void keyTyped(KeyEvent e) {
+        
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+        
+            if(keyCode == 38){ //Arriba
+                tablero.moverJugador(-1, 0);
+            }
+            else if(keyCode == 40){ //Abajo
+                tablero.moverJugador(1, 0);
+            }
+            else if(keyCode == 37){ //Izquierda
+                tablero.moverJugador(0, -1);
+            }
+            else if(keyCode == 39){ //Derecha
+                tablero.moverJugador(0, 1);
+            }
+            repaint();
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {
+        
+        }
+        
+        });
+    }
+    /*public void keyPressed(KeyEvent e){
+        int keyCode = e.getKeyCode();
+        
+        if(keyCode == 38){ //Arriba
+            tablero.moverJugador(-1, 0);
+        }
+        else if(keyCode == 40){ //Abajo
+            tablero.moverJugador(1, 0);
+        }
+        else if(keyCode == 37){ //Izquierda
+            tablero.moverJugador(0, -1);
+        }
+        else if(keyCode == 39){ //Derecha
+            tablero.moverJugador(0, 1);
+        }
+    }*/
 }
